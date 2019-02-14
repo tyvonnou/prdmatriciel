@@ -24,6 +24,10 @@ int main(int argc, char **argv)
     off_t pa_offset;
     char *addr;
 
+ //initialisation des variable de la matrice
+
+    int nbmult, nbligneA, nbcolonneA, nbligneB, nbcolonneB;
+
     if (argc < 2) {
         printf("Usage: %s filename\n", argv[0]);
         exit(EXIT_FAILURE);
@@ -49,6 +53,69 @@ int main(int argc, char **argv)
     if (addr == MAP_FAILED) handle_error("mmap");
 
 
+    int pos;
+    //TODO: Idée possible pour récupéré la position (%n)
+    /*
+    while (sscanf(s, "%d%n", &d, &pos) == 1) {
+      arr[n++] = d;
+      s += pos;
+    } */
+   sscanf( addr, "%d %d %d  %d %d", &nbmult, &nbligneA, &nbcolonneA, &nbligneB, &nbcolonneB);
+
+   printf("%d %d %d  %d %d\n", nbmult, nbligneA, nbcolonneA, nbligneB, nbcolonneB);
+
+
+
+   int i , j;
+   int **m1;
+   m1 = (int **) malloc(sizeof(int *)*20);
+   for(i = 0; i < 20; i++){
+     m1[i]=(int *) malloc(sizeof(int)*20);
+
+   }
+   int **m2;
+   m2 = (int **) malloc(sizeof(int *)*20);
+   for(i = 0; i < 20; i++){
+     m2[i]=(int *) malloc(sizeof(int)*20);
+
+   }
+   int **m3;
+   m3 = (int **) malloc(sizeof(int *)*20);
+   for(i = 0; i < 20; i++){
+     m3[i]=(int *) malloc(sizeof(int)*20);
+
+   }
+
+      for(i = 0; i < nbligneA; i++){
+        for(j = 0; j < nbcolonneA; j++){
+           sscanf(addr,"%d",&m1[i][j]);
+           printf("%d",m1[i][j]);
+
+        }
+      }
+
+         for(i = 0; i < nbligneB; i++){
+           for(j = 0; j < nbcolonneB; j++){
+              sscanf(addr,"%d",&m2[i][j]);
+              printf("%d",m2[i][j]);
+
+           }
+         }
+
+   for(i = 0; i < nbligneA; i++){
+       for(j = 0; j < nbcolonneB; j++){
+        m3[i][j] = m1[i][0]*m2[0][j]+m1[i][1]*m2[1][j];
+        printf("%d\t",m3[i][j]);
+       }
+       printf("\n");
+   }
+   free(m1);
+   free(m2);
+   free(m3);
+
+
+
+   return 0;
 
     /*
         Suppression de l'espace mémoire
