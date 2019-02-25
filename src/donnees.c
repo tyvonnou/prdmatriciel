@@ -39,24 +39,29 @@ int main(){
     // Pour chaque ligne de la première matrice
     for(j=0 ;j<nbLignesA ;j++){
       // Pour chaque colonnes de la première matrice
-      for(k=0;k<nbColonnesA;k++){
+      for(k=0;k<nbColonnesA-1;k++){
         //je demande la valeur concerné
         printf("MatA[%d][%d] // Rentrez la valeur :", k,j);
         scanf("%d",&valeur);
         // Puis je la renseigne dans le fichier
         fprintf(P_FICHIER, "%d ", valeur);
       }
+ //je demande la valeur concerné
+        printf("MatA[%d][%d] // Rentrez la valeur :", k,j);
+        scanf("%d",&valeur);
       // Je termine la ligne
-      fprintf(P_FICHIER, "\n");
+      fprintf(P_FICHIER, "%d\n",valeur);
     }
     // Même chose avec la seconde matrice
     for(j=0;j<nbLignesB;j++){
-      for(k=0;k<nbColonnesB;k++){
+      for(k=0;k<nbColonnesB-1;k++){
         printf("MatB[%d][%d] // Rentrez la valeur :", k,j);
         scanf("%d",&valeur);
         fprintf(P_FICHIER, "%d ", valeur);
       }
-      fprintf(P_FICHIER, "\n");
+	printf("MatB[%d][%d] // Rentrez la valeur :", k,j);
+        scanf("%d",&valeur);
+      	fprintf(P_FICHIER, "%d\n",valeur);
     }
   }
   // Fermeture du fichier 
