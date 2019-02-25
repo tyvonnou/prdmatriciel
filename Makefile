@@ -2,12 +2,15 @@ CC=gcc
 CLFAGS=-W -Wall -pedantic -gnu99
 LDFLAGS=-pthread
 
-all: RecupDonnees produit.out
+all: RecupDonnees produit.out produitCPU.out
 
 RecupDonnees: objects/donnees.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 produit.out: objects/produit.o
+	$(CC) $^ -o $@ $(LDFLAGS)
+
+produitCPU.out: objects/produitCPU.o
 	$(CC) $^ -o $@ $(LDFLAGS)
 
 objects/%.o: src/%.c         
